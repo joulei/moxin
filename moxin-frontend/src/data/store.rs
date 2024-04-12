@@ -10,7 +10,7 @@ use std::path::PathBuf;
 use std::sync::mpsc::channel;
 use std::{env, fs};
 
-const DEFAULT_DOWNLOADS_FOLDER: &str = "moxin/model_downloads";
+const DEFAULT_DOWNLOADS_FOLDER: &str = ".moxin/model_downloads";
 const DEFAULT_MAX_DOWNLOAD_THREADS: usize = 3;
 
 #[derive(Clone, DefaultNone, Debug)]
@@ -233,14 +233,40 @@ impl Store {
     }
 }
 
+// fn setup_model_downloads_folder() -> Result<String> {
+//     let home_dir = env::var("HOME") // Unix-like systems
+//         .or_else(|_| env::var("USERPROFILE")) // Windows
+//         .context("Home directory not found")?;
+
+//     let downloads_dir = PathBuf::from(home_dir).join(DEFAULT_DOWNLOADS_FOLDER);
+
+//     fs::create_dir_all(&downloads_dir)?;
+
+//     Ok(downloads_dir.to_string_lossy().to_string())
+// }
+
 fn setup_model_downloads_folder() -> Result<String> {
-    let home_dir = env::var("HOME") // Unix-like systems
-        .or_else(|_| env::var("USERPROFILE")) // Windows
+    let home_dir = env::var("HOME"). // Unix-like systems
+        or_else(|_| env::var("USERPROFILE")) // Windows
         .context("Home directory not found")?;
 
     let downloads_dir = PathBuf::from(home_dir).join(DEFAULT_DOWNLOADS_FOLDER);
 
-    fs::create_dir_all(&downloads_dir)?;
+    fs::create_dir_all(&downloads_dir)
+        .context(format!("Failed to create directory '{}'", downloads_dir.display()))?;
+
+    #[cfg(target_os = "windows")]
+    {
+        use std::os::windows::fs::FileExt;
+        let metadata = fs::metadata(&downloads_dir)
+            .context("Failed to get metadata for downloads directory")?;
+        if !metadata.is_dir() {
+            return Err(anyhow::anyhow!("Expected a directory but found something else"));
+        }
+        
+        // Failing to set the directory to hidden is not an important error
+        let _ = fs::set_file_attributes(&downloads_dir, fs::Attributes::HIDDEN);
+    }
 
     Ok(downloads_dir.to_string_lossy().to_string())
 }
