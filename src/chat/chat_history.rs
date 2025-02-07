@@ -120,17 +120,15 @@ impl Widget for ChatHistory {
 
         let mut items: Vec<Item> = Vec::new();
 
-        if moly_mofa::should_be_visible() {
-            items.push(Item::AgentsHeader);
-            let agents_availability = store.chats.agents_availability();
-            match agents_availability {
-                AgentsAvailability::NoServers => items.push(Item::NoAgentsWarning(agents_availability.to_human_readable())),
-                AgentsAvailability::ServersNotConnected => items.push(Item::NoAgentsWarning(agents_availability.to_human_readable())),
-                AgentsAvailability::NoAgents => items.push(Item::NoAgentsWarning(agents_availability.to_human_readable())),
-                AgentsAvailability::Available => {
-                    for agent in &agents {
-                        items.push(Item::AgentButton(agent));
-                    }
+        items.push(Item::AgentsHeader);
+        let agents_availability = store.chats.agents_availability();
+        match agents_availability {
+            AgentsAvailability::NoServers => items.push(Item::NoAgentsWarning(agents_availability.to_human_readable())),
+            AgentsAvailability::ServersNotConnected => items.push(Item::NoAgentsWarning(agents_availability.to_human_readable())),
+            AgentsAvailability::NoAgents => items.push(Item::NoAgentsWarning(agents_availability.to_human_readable())),
+            AgentsAvailability::Available => {
+                for agent in &agents {
+                    items.push(Item::AgentButton(agent));
                 }
             }
         }
@@ -169,12 +167,12 @@ impl Widget for ChatHistory {
                         }
                         Item::NoAgentsWarning(text) => {
                             let item = list.item(cx, item_id, live_id!(NoAgentsWarning));
-                            item.set_text(text);
+                            item.set_text(cx, text);
                             item.draw_all(cx, scope);
                         }
                         Item::AgentButton(agent) => {
                             let item = list.item(cx, item_id, live_id!(Agent));
-                            item.as_entity_button().set_agent(agent);
+                            item.as_entity_button().set_agent(cx, agent);
                             item.draw_all(cx, scope);
                         }
                         Item::ChatButton(chat_id) => {
