@@ -9,6 +9,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -39,7 +40,7 @@ live_design! {
             text_style: <REGULAR_FONT>{font_size: 11},
             color: #000
         }
-        text: "Change Download Location"
+        text: (CHANGE_DOWNLOAD_LOCATION_TEXT)
         enabled: true
     }
 
@@ -65,7 +66,7 @@ live_design! {
             text_style: <REGULAR_FONT>{font_size: 11},
             color: #000
         }
-        text: "Show in Folder"
+        text: (SHOW_IN_FILES_TEXT)
     }
 
     SearchBar = <RoundedView> {
@@ -102,7 +103,7 @@ live_design! {
             width: 260,
             height: Fit,
 
-            empty_message: "Filter files"
+            empty_message: (MY_MODELS_SEARCH_BAR_EMPTY_MESSAGE)
 
             draw_text: {
                 text_style:<REGULAR_FONT>{font_size: 11},
@@ -138,7 +139,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 30}
                         color: #000
                     }
-                    text: "My Models"
+                    text: (MY_MODELS_TITLE)
                 }
 
                 models_summary = <Label> {

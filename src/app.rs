@@ -12,8 +12,8 @@ use crate::shared::download_notification_popup::{
     DownloadNotificationPopupAction, DownloadNotificationPopupRef, DownloadNotificationPopupWidgetRefExt, DownloadResult, PopupAction
 };
 use crate::shared::popup_notification::PopupNotificationWidgetRefExt;
+use makepad_widgets::translator::Translator;
 use moly_protocol::data::{File, FileID};
-use crate::shared::translator::Translator;
 
 use makepad_widgets::*;
 use markdown::MarkdownAction;
@@ -163,7 +163,8 @@ impl LiveRegister for App {
         makepad_widgets::live_design(cx);
         makepad_code_editor::live_design(cx);
 
-        cx.link(live_id!(translator), live_id!(translator_zh));
+        let translation_doc = translation_doc_live_id();
+        cx.link(live_id!(translator), translation_doc);
 
         crate::shared::live_design(cx);
         crate::landing::live_design(cx);
@@ -185,7 +186,7 @@ impl AppMain for App {
             }
         }
       
-        self.init_translator(cx);
+        // self.init_translator(cx);
         
         let scope = &mut Scope::with_data(&mut self.store);
         self.ui.handle_event(cx, event, scope);
@@ -194,6 +195,10 @@ impl AppMain for App {
 }
 
 impl MatchEvent for App {
+    fn handle_startup(&mut self, cx: &mut Cx) {
+        self.init_translator(cx);
+    }
+
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         self.ui
             .radio_button_set(ids!(
@@ -343,24 +348,45 @@ impl App {
     }
 
     fn init_translator(&mut self, cx: &mut Cx) {
-         let mut translator = Translator::new("en");
+        let initial_language = std::env::var("MOLY_LANGUAGE").unwrap_or("en".to_string());
+
+         let mut translator = Translator::new(&initial_language);
          translator.set_translations(cx, &[
              ("en", "src/translations/en.rs"),
              ("zh", "src/translations/zh.rs"),
              ("es", "src/translations/es.rs"),
+             ("nl", "src/translations/nl.rs"),
          ]).expect("Failed to load translations");
 
-         // let translation = translator.tr(cx, live_id!(MY_MODELS_TITLE));
-         // dbg!(translation);
+        let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
+        dbg!(translation);
 
-         // let _ = translator.set_language("es").unwrap();
+        // translator.set_language("zh").unwrap();
+        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
+        // dbg!(translation);
 
-         // let translation = translator.tr(cx, live_id!(MY_MODELS_TITLE));
-         // dbg!(translation);
+        // translator.set_language("es").unwrap();
+        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
+        // dbg!(translation);
 
-         // let _ = translator.set_language("zh").unwrap();
+        // translator.set_language("nl").unwrap();
+        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
+        // dbg!(translation);
 
-         // let translation = translator.tr(cx, live_id!(MY_MODELS_TITLE));
-         // dbg!(translation);
+        // translator.set_language("en").unwrap();
+        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
+        // dbg!(translation);
+
+         cx.set_global(translator);
+    }
+}
+
+fn translation_doc_live_id() -> LiveId {
+    match std::env::var("MOLY_LANGUAGE").unwrap_or_else(|_| "en".to_string()).as_str() {
+        "en" => live_id!(translator_en),
+        "zh" => live_id!(translator_zh),
+        "es" => live_id!(translator_es),
+        "nl" => live_id!(translator_nl),
+        _ => live_id!(translator_en),
     }
 }

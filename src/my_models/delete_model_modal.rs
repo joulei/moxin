@@ -12,7 +12,7 @@ live_design! {
     use crate::shared::styles::*;
     use crate::shared::widgets::MolyButton;
     use crate::shared::resource_imports::*;
-
+    use link::translator::*;
     pub DeleteModelModal = {{DeleteModelModal}} {
         width: Fit
         height: Fit
@@ -42,7 +42,7 @@ live_design! {
                     height: Fit,
 
                     model_name = <Label> {
-                        text: "Delete Model"
+                        text: (DELETE_MODEL_TEXT)
                         draw_text: {
                             text_style: <BOLD_FONT>{font_size: 13},
                             color: #000
@@ -104,7 +104,7 @@ live_design! {
                             color: #fff,
                         }
 
-                        text: "Cancel"
+                        text: (CANCEL_TEXT)
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0
@@ -121,7 +121,7 @@ live_design! {
                             color: #D92D20,
                         }
 
-                        text: "Delete"
+                        text: (DELETE_TEXT)
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #fff

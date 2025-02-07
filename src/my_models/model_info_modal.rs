@@ -7,6 +7,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::MolyButton;
@@ -84,7 +85,7 @@ live_design! {
                 align: {x: 0.0, y: 0.6}
 
                 <Label> {
-                    text: "Read from"
+                    text: (READ_FROM_TEXT)
                     draw_text: {
                         text_style: <REGULAR_FONT>{font_size: 10},
                         color: #344054
@@ -131,7 +132,7 @@ live_design! {
                             color: #EDFCF2,
                         }
 
-                        text: "Copy to Clipboard"
+                        text: (COPY_TO_CLIPBOARD_TEXT)
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0
@@ -149,7 +150,7 @@ live_design! {
                             color: #F5FEFF,
                         }
 
-                        text: "Model Card on Hugging Face"
+                        text: (MODEL_CARD_ON_HUGGING_FACE_TEXT)
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0

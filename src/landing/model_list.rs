@@ -4,6 +4,7 @@ use crate::data::search::SearchAction;
 use crate::data::store::{Store, StoreAction};
 use crate::landing::search_loading::SearchLoadingWidgetExt;
 use crate::shared::actions::ChatAction;
+use crate::shared::translator::Translator;
 use makepad_widgets::*;
 use moly_mofa::MofaAgent;
 use moly_protocol::data::Model;
@@ -198,6 +199,7 @@ impl Widget for ModelList {
                     }
                 }
             }
+            // let header = cx.tr(id!(translate.MODELS_HEADER)); -- cx.value
             items.push(Item::Header("Models"));
         }
 

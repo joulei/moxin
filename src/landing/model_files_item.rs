@@ -17,6 +17,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::MolyButton;
@@ -53,7 +54,7 @@ live_design! {
 
     DownloadButton = <ModelCardButton> {
         draw_bg: { color: #099250, border_color: #099250 }
-        text: "Download"
+        text: (DOWNLOAD_TEXT)
         draw_icon: {
             svg_file: (ICON_DOWNLOAD),
         }
@@ -61,7 +62,7 @@ live_design! {
 
     StartChatButton = <ModelCardButton> {
         draw_bg: { color: #fff, color_hover: #09925033, border_color: #d0d5dd }
-        text: "Chat with Model"
+        text: (CHAT_WITH_MODEL_TEXT)
         draw_text: {
             color: #087443;
         }

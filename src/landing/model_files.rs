@@ -7,6 +7,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::MolyRadioButtonTab;
@@ -52,7 +53,7 @@ live_design! {
                 text_style: <BOLD_FONT>{font_size: 9},
                 color: #667085
             }
-            text: "SHOW"
+            text: (SHOW_FILES_TEXT)
         }
 
         tab_buttons = <RoundedView> {
@@ -85,7 +86,7 @@ live_design! {
                     text_style: <BOLD_FONT>{font_size: 9},
                     color: #667085
                 }
-                text: "File name"
+                text: (FILE_NAME_TEXT)
             }
         }
 
@@ -96,7 +97,7 @@ live_design! {
                     text_style: <BOLD_FONT>{font_size: 9},
                     color: #667085
                 }
-                text: "Full Size"
+                text: (FULL_SIZE_TEXT)
             }
         }
 
@@ -107,7 +108,7 @@ live_design! {
                     text_style: <BOLD_FONT>{font_size: 9},
                     color: #667085
                 }
-                text: "Quantization"
+                text: (QUANTIZATION_TEXT)
             }
         }
         cell4 = {

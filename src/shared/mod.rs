@@ -13,7 +13,6 @@ pub mod styles;
 pub mod tooltip;
 pub mod utils;
 pub mod widgets;
-pub mod translator;
 
 pub fn live_design(cx: &mut Cx) {
     meta::live_design(cx);

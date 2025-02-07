@@ -4,6 +4,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -73,17 +74,17 @@ live_design! {
 
         model_size_tag = <ModelAttributeTag> {
             draw_bg: { color: #D4E6F7 },
-            attr_name = { text: "Model Size" }
+            attr_name = { text: (MODEL_SIZE_TEXT) }
         }
 
         model_requires_tag = <ModelAttributeTag> {
             draw_bg: { color: #D6F5EB },
-            attr_name = { text: "Requires" }
+            attr_name = { text: (REQUIRES_TEXT) }
         }
 
         model_architecture_tag = <ModelAttributeTag> {
             draw_bg: { color: #F0D6F5 },
-            attr_name = { text: "Architecture" }
+            attr_name = { text: (ARCHITECTURE_TEXT) }
         }
     }
 }

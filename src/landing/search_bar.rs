@@ -7,6 +7,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -54,7 +55,7 @@ live_design! {
                     text_style: <REGULAR_FONT>{font_size: 13},
                     color: #000
                 }
-                text: "Discover, download, and run local LLMs"
+                text: (LANDING_SEARCH_TITLE)
             }
         }
 
@@ -92,7 +93,7 @@ live_design! {
             input = <MolyTextInput> {
                 width: Fill,
                 height: Fit,
-                empty_message: "Search Model by Keyword"
+                empty_message: (LANDING_SEARCH_PLACEHOLDER)
             }
 
             clear_text_button = <MolyButton> {

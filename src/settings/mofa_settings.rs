@@ -10,6 +10,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -186,7 +187,7 @@ live_design! {
             add_server_input = <MolyTextInput> {
                 width: Fill
                 height: Fit
-                empty_message: "Add a new server"
+                empty_message: (ADD_A_NEW_SERVER_TEXT)
             }
         }
 
@@ -217,7 +218,7 @@ live_design! {
                 text_style: <BOLD_FONT>{font_size: 16}
                 color: #000
             }
-            text: "MoFa Settings"
+            text: (MOFA_SETTINGS_TITLE)
         }
 
         <HorizontalFiller> { height: 10 }
@@ -227,7 +228,7 @@ live_design! {
                 text_style: <BOLD_FONT>{font_size: 12}
                 color: #000
             }
-            text: "MoFa Servers"
+            text: (MOFA_SERVERS_TITLE)
         }
 
         <MofaServers> {}

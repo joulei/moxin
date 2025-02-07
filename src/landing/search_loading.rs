@@ -4,6 +4,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::landing::model_card::ModelCard;
@@ -46,7 +47,7 @@ live_design! {
                 text_style: <REGULAR_FONT>{font_size: 14},
                 color: #667085
             }
-            text: "Searching..."
+            text: (SEARCHING_TEXT)
         }
 
         animator: {

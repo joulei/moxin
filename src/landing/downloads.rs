@@ -6,6 +6,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -35,7 +36,7 @@ live_design! {
                 text_style: <BOLD_FONT>{font_size: 9},
                 color: #000
             }
-            text: "Model Downloads"
+            text: (MODEL_DOWNLOADS_TEXT)
         }
 
         downloading_count = <Label> {

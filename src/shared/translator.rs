@@ -51,16 +51,13 @@ impl Translator {
     pub fn tr(&mut self, cx: &Cx, tr_live_id: LiveId) -> Option<String> {
         let file_id = self.translations.get(&self.current_language)?;
 
-        // TODO: take content from the live design
         let live_registry_ref = cx.live_registry.borrow();
-        dbg!("HERE");
         let live_file = live_registry_ref.file_id_to_file(*file_id);
-        dbg!("HERE");
         // dbg!(&live_file.expanded.nodes);
         let nodes = &live_file.expanded.nodes;
 
-	dbg!(file_id);
-	dbg!(live_registry_ref.file_id_to_file_name(*file_id));
+        // dbg!(file_id);
+    	// dbg!(live_registry_ref.file_id_to_file_name(*file_id));
         let target = live_registry_ref.find_scope_target(tr_live_id, nodes)?;
         match target {
             live_registry::LiveScopeTarget::LocalPtr(local_ptr) => {
@@ -74,6 +71,29 @@ impl Translator {
                 value
             }
         }
+    }
+
+    pub fn tr_with_args(
+        &mut self,
+        cx: &Cx,
+        tr_live_id: LiveId,
+        args: &[&str],
+    ) -> String {
+        // TODO: request defaults
+        let translation = self.tr(cx, tr_live_id).unwrap();
+
+        // Replace placeholders with arguments
+        self.format_with_args(&translation, args)
+    }
+
+    // Helper method to format placeholders
+    fn format_with_args(&self, template: &str, args: &[&str]) -> String {
+        let mut result = template.to_string();
+        for (i, arg) in args.iter().enumerate() {
+            let placeholder = format!("{{{}}}", i);
+            result = result.replace(&placeholder, arg);
+        }
+        result
     }
 
     pub fn set_language(&mut self, language: &str) -> Result<(), String> {

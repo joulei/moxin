@@ -38,4 +38,59 @@ live_design! {
     pub SETTINGS_PORT_NUMBER = "端口号："
     pub SETTINGS_PORT_ERROR = "使用此端口号加载模型时出现问题。请尝试另一个。"
     pub SETTINGS_CODE_EXAMPLE = "客户端代码示例"
+
+    // My Models Screen
+    pub CHANGE_DOWNLOAD_LOCATION_TEXT = "更改下载位置"
+    pub SHOW_IN_FILES_TEXT = "在文件中显示"
+    pub MY_MODELS_SEARCH_BAR_EMPTY_MESSAGE = "过滤文件"
+    pub MY_MODELS_TITLE = "我的模型"
+    pub READ_FROM_TEXT = "从"
+    pub COPY_TO_CLIPBOARD_TEXT = "复制到剪贴板"
+    pub MODEL_CARD_ON_HUGGING_FACE_TEXT = "Hugging Face上的模型卡片"
+
+    // Downloaded Files Table
+    pub MODEL_FILE_TEXT = "模型文件"
+    pub FILE_SIZE_TEXT = "文件大小"
+    pub ADDED_DATE_TEXT = "添加日期"
+    pub CHAT_WITH_MODEL_TEXT = "与模型聊天"
+
+    // Delete Model Modal
+    pub DELETE_MODEL_TEXT = "删除模型"
+    pub CANCEL_TEXT = "取消"
+    pub DELETE_TEXT = "删除"
+    pub DELETE_MODEL_PROMPT_TEXT = "您确定要删除 {0} 吗？此操作无法撤销。"
+
+    // Settings Screen
+    pub ADD_A_NEW_SERVER_TEXT = "添加一个新服务器"
+    pub MOFA_SETTINGS_TITLE = "MoFa设置"
+    pub MOFA_SERVERS_TITLE = "MoFa服务器"
+
+    // Delete Server Modal
+    pub CANCEL_SERVER_DELETION_TEXT = "取消"
+    pub CONFIRM_DELETE_SERVER_TEXT = "删除"
+    pub DELETE_SERVER_MODAL_TITLE_TEXT = "删除服务器"
+
+    // Landing Shared
+    pub MODEL_SIZE_TEXT = "模型大小"
+    pub REQUIRES_TEXT = "要求"
+    pub ARCHITECTURE_TEXT = "架构"
+
+    // Landing Search Bar
+    pub SEARCH_BAR_PLACEHOLDER_TEXT = "搜索模型..."
+
+    // Landing Search Loading
+    pub SEARCHING_TEXT = "搜索中..."
+
+    // Landing Model Files
+    pub SHOW_FILES_TEXT = "显示"
+    pub FILE_NAME_TEXT = "文件名"
+    pub FULL_SIZE_TEXT = "完整大小"
+    pub QUANTIZATION_TEXT = "量化"
+
+    // Landing Model Files Item
+    pub DOWNLOAD_TEXT = "下载"
+    pub CHAT_WITH_MODEL_TEXT = "与模型聊天"
+
+    // Landing Downloads
+    pub MODEL_DOWNLOADS_TEXT = "模型下载"
 }

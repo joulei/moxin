@@ -38,4 +38,56 @@ live_design! {
     pub SETTINGS_PORT_NUMBER = "Port number:"
     pub SETTINGS_PORT_ERROR = "Something went wrong while loading the model using this port number. Please try another one."
     pub SETTINGS_CODE_EXAMPLE = "Client code example"
+
+    // My Models Screen
+    pub CHANGE_DOWNLOAD_LOCATION_TEXT = "Change Download Location"
+    pub SHOW_IN_FILES_TEXT = "Show in Folder"
+    pub MY_MODELS_SEARCH_BAR_EMPTY_MESSAGE = "Filter files"
+    pub MY_MODELS_TITLE = "My Models"
+    pub READ_FROM_TEXT = "Read from"
+    pub COPY_TO_CLIPBOARD_TEXT = "Copy to Clipboard"
+    pub MODEL_CARD_ON_HUGGING_FACE_TEXT = "Model Card on Hugging Face"
+
+    // Downloaded Files Table
+    pub MODEL_FILE_TEXT = "Model File"
+    pub FILE_SIZE_TEXT = "File Size"
+    pub ADDED_DATE_TEXT = "Added Date"
+    pub CHAT_WITH_MODEL_TEXT = "Chat with Model"
+
+    // Delete Model Modal
+    pub DELETE_MODEL_TEXT = "Delete Model"
+    pub CANCEL_TEXT = "Cancel"
+    pub DELETE_TEXT = "Delete"
+    pub DELETE_MODEL_PROMPT_TEXT = "Are you sure you want to delete {}?\nThis action cannot be undone."
+
+    // Settings Screen
+    pub ADD_A_NEW_SERVER_TEXT = "Add a new server"
+    pub MOFA_SETTINGS_TITLE = "MoFa Settings"
+    pub MOFA_SERVERS_TITLE = "MoFa Servers"
+
+    // Delete Server Modal
+    pub CANCEL_SERVER_DELETION_TEXT = "Cancel"
+    pub CONFIRM_DELETE_SERVER_TEXT = "Delete"
+    pub DELETE_SERVER_MODAL_TITLE_TEXT = "Delete Server"
+    
+    // Landing Shared
+    pub MODEL_SIZE_TEXT = "Model Size"
+    pub REQUIRES_TEXT = "Requires"
+    pub ARCHITECTURE_TEXT = "Architecture"
+
+    // Landing Search Loading
+    pub SEARCHING_TEXT = "Searching..."
+
+    // Landing Model Files
+    pub SHOW_FILES_TEXT = "SHOW"
+    pub FILE_NAME_TEXT = "File name"
+    pub FULL_SIZE_TEXT = "Full Size"
+    pub QUANTIZATION_TEXT = "Quantization"
+
+    // Landing Model Files Item
+    pub DOWNLOAD_TEXT = "Download"
+    pub CHAT_WITH_MODEL_TEXT = "Chat with Model"
+
+    // Landing Downloads
+    pub MODEL_DOWNLOADS_TEXT = "Model Downloads"
 }

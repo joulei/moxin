@@ -10,6 +10,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -102,7 +103,7 @@ live_design! {
 
         start_chat_button = <DownloadedFilesRowButton> {
             width: 140
-            text: "Chat with Model",
+            text: (CHAT_WITH_MODEL_TEXT),
             draw_text: {
                 color: (MODEL_CTA_COLOR)
                 text_style: <REGULAR_FONT>{font_size: 9}

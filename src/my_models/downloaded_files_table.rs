@@ -12,6 +12,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::*;
@@ -42,9 +43,9 @@ live_design! {
             color: #F2F4F7;
         }
 
-        <RowHeaderLabel> { width: 600, label = {text: "Model File"} }
-        <RowHeaderLabel> { width: 100, label = {text: "File Size"} }
-        <RowHeaderLabel> { width: 100, label = {text: "Added Date"} }
+        <RowHeaderLabel> { width: 600, label = {text: (MODEL_FILE_TEXT)} }
+        <RowHeaderLabel> { width: 100, label = {text: (FILE_SIZE_TEXT)} }
+        <RowHeaderLabel> { width: 100, label = {text: (ADDED_DATE_TEXT)} }
         <RowHeaderLabel> { width: 250, label = {text: ""} }
     }
 

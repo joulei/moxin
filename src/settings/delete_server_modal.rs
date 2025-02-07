@@ -8,6 +8,7 @@ live_design! {
     use link::theme::*;
     use link::shaders::*;
     use link::widgets::*;
+    use link::translator::*;
 
     use crate::shared::styles::*;
     use crate::shared::widgets::MolyButton;
@@ -42,7 +43,7 @@ live_design! {
                     height: Fit,
 
                     model_name = <Label> {
-                        text: "Delete Server",
+                        text: (DELETE_SERVER_MODAL_TITLE_TEXT),
                         draw_text: {
                             text_style: <BOLD_FONT>{font_size: 13},
                             color: #000
@@ -104,7 +105,7 @@ live_design! {
                             color: #fff,
                         }
 
-                        text: "Cancel"
+                        text: (CANCEL_SERVER_DELETION_TEXT)
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0
@@ -121,7 +122,7 @@ live_design! {
                             color: #D92D20,
                         }
 
-                        text: "Delete"
+                        text: (CONFIRM_DELETE_SERVER_TEXT)
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #fff
