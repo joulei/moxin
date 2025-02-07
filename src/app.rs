@@ -351,33 +351,20 @@ impl App {
         let initial_language = std::env::var("MOLY_LANGUAGE").unwrap_or("en".to_string());
 
          let mut translator = Translator::new(&initial_language);
-         translator.set_translations(cx, &[
+        
+        translator.set_translations(cx, &[
              ("en", "src/translations/en.rs"),
              ("zh", "src/translations/zh.rs"),
              ("es", "src/translations/es.rs"),
              ("nl", "src/translations/nl.rs"),
          ]).expect("Failed to load translations");
 
-        let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
+         cx.translator = translator;
+
+        // cx.translator = Translator::discover_translations(cx, "en");
+
+        let translation = cx.tr_with_args( live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
         dbg!(translation);
-
-        // translator.set_language("zh").unwrap();
-        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
-        // dbg!(translation);
-
-        // translator.set_language("es").unwrap();
-        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
-        // dbg!(translation);
-
-        // translator.set_language("nl").unwrap();
-        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
-        // dbg!(translation);
-
-        // translator.set_language("en").unwrap();
-        // let translation = translator.tr_with_args(cx, live_id!(DELETE_MODEL_PROMPT_TEXT), &["some model"]);
-        // dbg!(translation);
-
-         cx.set_global(translator);
     }
 }
 

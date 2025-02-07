@@ -160,10 +160,8 @@ impl Widget for DeleteModelModal {
 
         self.file_id = downloaded_file.file.id.clone();
 
-        let prompt_text = format!(
-            "Are you sure you want to delete {}?\nThis action cannot be undone.",
-            downloaded_file.file.name
-        );
+        let prompt_text = cx.tr_with_args(live_id!(DELETE_MODEL_PROMPT_TEXT), &[&downloaded_file.file.name]);
+
         self.label(id!(wrapper.body.delete_prompt))
             .set_text(cx, &prompt_text);
 
